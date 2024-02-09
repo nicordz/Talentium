@@ -1,1 +1,5 @@
-"# c16-84-ft-java"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/No-Country/c16-84-ft-java.gitgit push -u origin main
+<h1>Proyecto <h1>
+
+## Venta de servicios tercerizados:
+
+"Plataforma para contratación de servicios externos, como plomería, además de la venta directa de productos por parte de los usuarios."
