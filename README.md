@@ -29,9 +29,7 @@
 
 #
 
-#
-
-<h3>Equipo:</h3>
+<h3>Reunion con Johana:</h3>
 <a href="">
     <img src="proyecto/reunionLT1.jpeg"alt="imagen de la pagina web" class="centrada">
 </a>
