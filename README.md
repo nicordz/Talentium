@@ -42,4 +42,11 @@
 </a>
 
 #
+
+<h3>BBDD:</h3>
+<a href="">
+    <img src="proyecto/BBDD(1).jpg"alt="imagen de la pagina web" class="centrada">
+</a>
+
+#
 </div>
