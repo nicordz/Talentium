@@ -35,4 +35,11 @@
 </a>
 
 #
+
+<h3>Equipos back:</h3>
+<a href="">
+    <img src="proyecto/equipos backend.jpg"alt="imagen de la pagina web" class="centrada">
+</a>
+
+#
 </div>
