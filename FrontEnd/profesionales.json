@@ -1,0 +1,24 @@
+{
+    "nombre": "",
+    "apellido": "",
+    "cuit": "",
+    "imagen": "",
+    "usuario": [
+        {
+            "email": "",
+            "contrasenia": "",
+            "avantar": ""
+        }
+    ],
+    "profesion": "ENUM(plomero, electricista,otros)(mayuscula)",
+    "direccion": [
+        {
+            "calle": "",
+            "numero": "",
+            "provincia": "",
+            "localidad": ""
+        }
+    ],
+    "cbu": ""
+
+}

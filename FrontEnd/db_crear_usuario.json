@@ -1,0 +1,21 @@
+{
+    "nombre": "",
+    "apellido": "",
+    "dni": "",
+    "imagen": "",
+    "usuario": [
+        {
+            "email": "",
+            "contrasenia": "",
+            "avantar": ""
+        }
+    ],
+    "direccion": [
+        {
+            "calle": "",
+            "numero": "",
+            "provincia": "",
+            "localidad": ""
+        }
+    ]
+}

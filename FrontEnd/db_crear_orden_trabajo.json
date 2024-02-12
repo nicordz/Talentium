@@ -1,0 +1,13 @@
+{
+    "descripcion": "maximo 250 letras",
+    "profecional": [
+        {
+            "nombre": "",
+            "apellido": "",
+            "profesion": "ENUM(plomero, electricista,otros)(mayuscula)"
+        }
+    ],
+    "precio": 1,
+    "fecha": "new date",
+    "estado": "ENUM(inicial, pendiente, aprobada)"
+}

@@ -1,0 +1,11 @@
+{
+    "productos":[
+        {
+"nombre":"",
+"precio":1,
+"descripcion": "maximo 250 letras",
+        }
+    ],
+    "cantidad": 1,
+    "foto": "direccion url"
+}
