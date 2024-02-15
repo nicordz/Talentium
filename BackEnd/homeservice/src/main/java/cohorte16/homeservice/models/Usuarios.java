@@ -16,8 +16,18 @@ public class Usuarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "email")
     private String email;
+    @Column(name = "contraseña")
     private String contrasenia;
+    @Column(name = "avatar")
     private String avatar;
+
+    public Usuarios(DatosRegistroUsuario datosRegistroUsuario) {
+        this.email = datosRegistroUsuario.email();
+        this.contrasenia = datosRegistroUsuario.contrasenia();
+        this.avatar = datosRegistroUsuario.avatar();
+    }
 }

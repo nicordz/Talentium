@@ -1,6 +1,7 @@
 package cohorte16.homeservice.controllers;
 
 import cohorte16.homeservice.models.DatosRegistroUsuario;
+import cohorte16.homeservice.models.Usuarios;
 import cohorte16.homeservice.repositories.UsuariosRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,6 @@ public class UsuariosController {
 
     @PostMapping
     public void RegistrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario){
-        System.out.println(datosRegistroUsuario);
+       usuariosRepository.save(new Usuarios(datosRegistroUsuario));
     }
 }
