@@ -2,6 +2,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { RegisterFormProps } from '../interfaces/RegisterFormTypes';
 import { toast } from 'react-toastify';
 
+import useCreateUser from '../hooks/useCreateUser';
+
 const Specialities = [
     'Abogado',
     'Plomero',
@@ -17,10 +19,21 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
         handleSubmit,
     } = useForm<RegisterFormProps>();
 
+    const { createUser } = useCreateUser();
+
     const onSubmit: SubmitHandler<RegisterFormProps> = async (data) => {
         try {
             console.log(data);
-            toast.success('Te has registrado exitosamente!');
+
+            const userCreated = await createUser(data);
+
+            if (userCreated) {
+                toast.success('Te has registrado exitosamente!');
+            } else {
+                toast.error(
+                    'Hubo un error con el registro, vuelve a intentarlo'
+                );
+            }
         } catch (error) {
             console.error('Error during form submission:', error);
             toast.error('Ha ocurrido un error inesperado');
