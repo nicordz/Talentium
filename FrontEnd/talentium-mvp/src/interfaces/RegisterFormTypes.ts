@@ -3,6 +3,7 @@ export interface UserProps {
     surname: string;
     mail: string;
     password: string;
+    speciality?: Specialities;
 }
 
 export interface RegisterFormProps {
@@ -23,10 +24,10 @@ export enum UserType {
     Professional = 'Profesional',
 }
 
-type Specialities =
-    | 'Médico'
-    | 'Abogado'
-    | 'Ingeniero'
-    | 'Plomero'
-    | 'Jardinero'
-    | 'Otro';
+type Specialities = [
+    'Abogado',
+    'Plomero',
+    'Ingeniero',
+    'Jardinero',
+    'Electricista'
+];
