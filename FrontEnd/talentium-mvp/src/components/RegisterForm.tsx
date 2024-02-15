@@ -44,7 +44,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
         <form
             onSubmit={handleSubmit(onSubmit)}
             className={`bg-white/45 w-full p-4 py-8 rounded-lg shadow-lg justify-between grid grid-cols-2 grid-rows-6 sm:max-w-md ${
-                userType === 'Cliente' ? 'gap-1' : 'gap-4'
+                userType === 'Cliente' ? 'gap-1' : 'gap-2'
             }`}
         >
             <h2 className='text-xl font-bold mb-4 col-span-2 text-center w-full'>
@@ -104,7 +104,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
                     {errors.speciality?.type === 'required' && (
                         <p
                             role='alert'
-                            className='text-center text-red-500 mb-1'
+                            className='text-center text-red-500 mb-1 w-full'
                         >
                             {errors.speciality?.message}
                         </p>
@@ -153,7 +153,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ userType }) => {
                 } col-span-2 md:w-3/5 md:mx-auto`}
             >
                 {errors.password?.message && (
-                    <p role='alert' className='text-center text-red-500 mb-1'>
+                    <p
+                        role='alert'
+                        className='text-red-500 mb-1 text-center md:w-96 flex'
+                    >
                         {errors.password.message}
                     </p>
                 )}
