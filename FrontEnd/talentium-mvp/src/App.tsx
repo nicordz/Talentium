@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import RegisterForm from './components/RegisterForm';
+import UserTypeSelector from './components/UserTypeSelector';
+import { UserType } from './interfaces/RegisterFormTypes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+    const [userType, setUserType] = useState<UserType | null>(null);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    const handleSelectedUserType = (SelectedUserType: UserType) => {
+        setUserType(SelectedUserType);
+    };
 
-export default App
+    return (
+        <div className='flex bg-gradient-to-b from-sky-600 to-white h-screen justify-center items-center p-4'>
+            <ToastContainer />
+            {userType === null ? (
+                <UserTypeSelector onSelectedUserType={handleSelectedUserType} />
+            ) : (
+                <RegisterForm
+                    userType={userType}
+                    name=''
+                    surname=''
+                    mail=''
+                    password=''
+                />
+            )}
+        </div>
+    );
+};
+
+export default App;
