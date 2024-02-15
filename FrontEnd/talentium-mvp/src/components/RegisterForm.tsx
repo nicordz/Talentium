@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { RegisterFormProps } from '../types/RegisterFormTypes';
+import { RegisterFormProps } from '../interfaces/RegisterFormTypes';
 import { toast } from 'react-toastify';
 
 const Specialities = [
