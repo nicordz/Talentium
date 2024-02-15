@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="bg-white/45 p-4 mt-8 rounded-lg shadow-lg">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pl-4">
         <div>
-          <h4 className="text-lg font-bold mb-2">Menú</h4>
+          <h4 className="text-lg font-bold mb-2">Links</h4>
           <ul className="text-gray-500">
             <li>
               <a href="#">LogIn</a>
