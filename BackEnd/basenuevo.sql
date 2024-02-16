@@ -27,7 +27,7 @@ USE `homeservice` ;
 CREATE TABLE IF NOT EXISTS `homeservice`.`usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(45) NOT NULL,
+  `contrasenia` VARCHAR(45) NOT NULL,
   `avatar` VARCHAR(250) NULL DEFAULT 'url',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `homeservice`.`profesionales` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
-  `cuit` VARCHAR(45) NOT NULL,
+  `cuit` VARCHAR(45) UNIQUE  NOT NULL,
   `imagen` VARCHAR(250) NULL DEFAULT NULL,
   `profesional_usuario_id` INT NULL DEFAULT NULL,
   `PROFESION` ENUM("Otros") NOT NULL DEFAULT 'Otros',
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `homeservice`.`clientes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
-  `dni` VARCHAR(45) NOT NULL,
+  `dni` VARCHAR(45) UNIQUE NOT NULL,
   `imagen` VARCHAR(150) NULL DEFAULT NULL,
   `cliente_usuario_id` INT NULL DEFAULT NULL,
   `cliente_direccion_id` INT NULL DEFAULT NULL,
