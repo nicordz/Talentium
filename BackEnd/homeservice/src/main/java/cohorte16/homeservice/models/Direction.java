@@ -33,4 +33,5 @@ public class Direction {
     @NotBlank
     @Column(name="localidad")
     private String location;
+
 }
