@@ -2,6 +2,8 @@ package cohorte16.homeservice.models;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Builder
@@ -18,23 +20,26 @@ public class Client {
     private Long id;
 
     @Column(name = "nombre")
+    @NotBlank
     private String name;
 
     @Column(name = "apellido")
+    @NotBlank
     private String lastname;
 
     @Column(name = "dni")
+    @NotBlank
     private String dni;
 
     @Column(name = "imagen")
-    private String image;
+    private String urlImage;
 
-    @Basic(fetch = FetchType.LAZY)
     @Column(name = "clasificacion")
+    @NotNull
     private Integer classification;
 
     @Column(name = "activo")
-    private Boolean active;
+    private Boolean active = Boolean.TRUE;
 
 /*
     @Column(name = "cliente_usuario_id")

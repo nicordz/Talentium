@@ -4,7 +4,7 @@ import cohorte16.homeservice.models.Client;
 
 import java.util.List;
 
-public interface IClientService {
+public interface ClientService {
     Client save(Client client) throws Exception;
     Client findById(Long id) throws Exception;
     List<Client> findAll() throws  Exception;
