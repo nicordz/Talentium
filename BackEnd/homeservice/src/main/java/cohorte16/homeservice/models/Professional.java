@@ -46,16 +46,17 @@ public class Professional {
     private String urlImage;
 
     @Column(name = "activo")
-    private boolean active = Boolean.FALSE;
-
+    private boolean active = Boolean.TRUE;
+    /*
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "direccion_id", referencedColumnName = "id")
     private Direction direction;
 
-    //private User userApp;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User userApp;
     //private List<Product> ProductList;
     //private List<Order> OrderList;
-
+    */
 
 
 

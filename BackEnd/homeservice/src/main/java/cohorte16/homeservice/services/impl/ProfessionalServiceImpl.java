@@ -72,7 +72,7 @@ public class ProfessionalServiceImpl implements ProfessionalService {
         try {
             if(professionalRepository.existsById(id)){
                 Professional professional = professionalRepository.findById(id).get();
-                professional.setActive(false);
+                professional.setActive(Boolean.FALSE);
                 return true;
             }else{
                 return false;
