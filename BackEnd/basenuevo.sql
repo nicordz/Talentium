@@ -26,7 +26,7 @@ USE `homeservice` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `homeservice`.`usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) UNIQUE  NOT NULL,
   `contrasenia` VARCHAR(45) NOT NULL,
   `avatar` VARCHAR(250) NULL DEFAULT 'url',
   PRIMARY KEY (`id`))
