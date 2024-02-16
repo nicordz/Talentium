@@ -32,7 +32,7 @@ public class ProfessionalController {
         }
     }
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> save(@RequestBody Professional professional){
+    public ResponseEntity<?> save(@Valid @RequestBody Professional professional){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(professionalService.save(professional));
         }catch (Exception e){
