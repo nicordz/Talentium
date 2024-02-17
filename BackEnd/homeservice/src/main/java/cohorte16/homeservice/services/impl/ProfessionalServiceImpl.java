@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ProfessionalServiceImpl implements ProfessionalService {
     @Autowired
     private ProfessionalRepository professionalRepository;
 
     @Override
-    @Transactional
     public List<Professional> findAll() throws Exception {
        try {
           return professionalRepository.findAll();
@@ -28,7 +28,6 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    @Transactional
     public Professional findById(Long id) throws Exception {
         try {
             Optional<Professional> professionalOptional = professionalRepository.findById(id);
@@ -42,7 +41,6 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    @Transactional
     public Professional save(Professional professional) throws Exception {
         try{
             return professionalRepository.save(professional);
@@ -52,7 +50,6 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    @Transactional
     public Professional update(Long id, Professional professional) throws Exception {
         try {
             Optional<Professional> professionalOptional = professionalRepository.findById(id);
@@ -67,7 +64,6 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    @Transactional
     public boolean delete(Long id) throws Exception {
         try {
             if(professionalRepository.existsById(id)){

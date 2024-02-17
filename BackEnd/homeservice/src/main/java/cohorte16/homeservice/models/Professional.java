@@ -47,16 +47,17 @@ public class Professional {
 
     @Column(name = "activo")
     private boolean active = Boolean.TRUE;
-    /*
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "direccion_id", referencedColumnName = "id")
+    @JoinColumn(name = "profesional_direccion_id", referencedColumnName = "id")
     private Direction direction;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profesional_usuario_id", referencedColumnName = "id")
     private User userApp;
     //private List<Product> ProductList;
     //private List<Order> OrderList;
-    */
+    
 
 
 
