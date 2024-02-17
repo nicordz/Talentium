@@ -26,14 +26,17 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#4069e4] to-white h-screen flex flex-col items-center justify-center p-4 gap-3">
+    <div className="bg-gradient-to-b from-royal-blue-500 to-white h-screen flex flex-col items-center justify-center p-4 gap-3">
       <form
         action=""
-        className="mx-auto w-60 h-52 bg-sky-500 flex flex-col items-center rounded-xl shadow-slate-900 shadow-lg"
+        className="mx-auto w-60 h-56 bg-gradient-to-b from-royal-blue-500 flex flex-col items-center rounded-xl shadow-slate-900 shadow-lg"
         onSubmit={handleSubmit}
       >
         <label className="flex flex-col items-center justify-center m-3 p-4">
-          <h2 className="font-bold">Inicia Sesion</h2>
+          <div className="bg-royal-blue-900 w-16 h-16 rounded-full mb-2 flex items-center justify-center">
+            <img src="/Avatar.png" alt="" />
+          </div>
+
           <input
             type="email"
             id="email"
@@ -41,7 +44,7 @@ const Login: React.FC = () => {
             placeholder="email"
             value={loginForm.email}
             onChange={handleInputChange}
-            className="w-30 rounded-md m-1 px-2 shadow-inner shadow-black"
+            className="w-30 rounded-md m-1 px-2 shadow-inner shadow-slate-900"
           />
           <input
             type="password"
@@ -50,11 +53,11 @@ const Login: React.FC = () => {
             placeholder="contraseña"
             value={loginForm.password}
             onChange={handleInputChange}
-            className="w-30 rounded-md m-1 px-2 shadow-inner shadow-black"
+            className="w-30 rounded-md m-1 px-2 shadow-inner shadow-slate-900"
           />
           <button
             type="submit"
-            className="bg-sky-950 text-white w-30 rounded-md m-1 px-2 shadow-md shadow-black"
+            className="bg-royal-blue-800 hover:bg-royal-blue-950 text-white w-30 rounded-md m-1 px-2 mt-4 shadow-md shadow-slate-900"
           >
             Entrar
           </button>
