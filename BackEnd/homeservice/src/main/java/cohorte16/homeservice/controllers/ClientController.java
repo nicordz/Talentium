@@ -1,7 +1,7 @@
 package cohorte16.homeservice.controllers;
 
-import cohorte16.homeservice.models.Professional;
-import cohorte16.homeservice.services.impl.ProfessionalServiceImpl;
+import cohorte16.homeservice.models.Client;
+import cohorte16.homeservice.services.impl.ClientServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,40 +9,44 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/professional")
+@RequestMapping("/api/client")
 @CrossOrigin("*")
-public class ProfessionalController {
-    @Autowired
-    private ProfessionalServiceImpl professionalService;
+public class ClientController {
 
-    @GetMapping(value = "/all", produces = "application/json")
-    public ResponseEntity<?> getAll() {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.findAll());
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
-        }
-    }
-    @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<?> getOne(@PathVariable Long id){
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.findById(id));
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
-        }
-    }
+    @Autowired
+    private ClientServiceImpl iClientService;
+
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> save(@Valid @RequestBody Professional professional){
+    public ResponseEntity<?> save(@Valid @RequestBody Client client){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.save(professional));
+            return ResponseEntity.status(HttpStatus.OK).body(iClientService.save(client));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
-    @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody Professional professional){
+
+    @GetMapping(value = "/all", produces = "application/json")
+    public ResponseEntity<?> getAll() {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.update(id,professional));
+            return ResponseEntity.status(HttpStatus.OK).body(iClientService.findAll());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+        }
+    }
+
+    @GetMapping(value = "/{id}", produces = "application/json")
+    public ResponseEntity<?> getOne(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(iClientService.findById(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+        }
+    }
+
+    @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
+    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody Client client){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(iClientService.update(id,client));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
@@ -50,13 +54,10 @@ public class ProfessionalController {
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.delete(id));
+            return ResponseEntity.status(HttpStatus.OK).body(iClientService.delete(id));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
         }
     }
-
-
-
 
 }

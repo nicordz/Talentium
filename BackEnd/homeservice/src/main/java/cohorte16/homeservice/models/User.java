@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuarios {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,7 @@ public class Usuarios {
     @Column(name = "avatar")
     private String avatar;
 
-    public Usuarios(DatosRegistroUsuario datosRegistroUsuario) {
+    public User(DatosRegistroUsuario datosRegistroUsuario) {
         this.email = datosRegistroUsuario.email();
         this.contrasenia = datosRegistroUsuario.contrasenia();
         this.avatar = datosRegistroUsuario.avatar();
