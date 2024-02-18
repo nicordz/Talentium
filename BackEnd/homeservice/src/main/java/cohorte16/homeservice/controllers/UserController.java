@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserSeviceImpl usuariosRepository;
+    private UserSeviceImpl userSeviceImpl;
 
     @PostMapping
     public void RegistrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario){
-       usuariosRepository.saveUser(datosRegistroUsuario);
+       userSeviceImpl.saveUser(datosRegistroUsuario).OrElse(userSeviceImpl.validateLogin(datosRegistroUsuario));
     }
 
 
@@ -24,6 +24,6 @@ public class UserController {
     public String login(@RequestBody @Valid DatosLigin datosLogin) {
 
 
-        return usuariosRepository.validateLogin(datosLogin);
+        return userSeviceImpl.validateLogin(datosLogin);
     }
 }
