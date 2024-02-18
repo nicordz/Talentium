@@ -2,6 +2,7 @@ package cohorte16.homeservice.dtos;
 
 import cohorte16.homeservice.enums.Profession;
 import cohorte16.homeservice.models.Direction;
+import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
 
 public record ProfessionalDTO(
@@ -9,6 +10,7 @@ public record ProfessionalDTO(
         String lastname,
         String cuit,
         Profession profession,
+        Integer classification,
         String urlImage,
         String cbu,
         User userApp,

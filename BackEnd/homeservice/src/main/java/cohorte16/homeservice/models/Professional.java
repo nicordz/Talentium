@@ -55,6 +55,7 @@ public class Professional {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profesional_usuario_id", referencedColumnName = "id")
     private User userApp;
+
     //private List<Product> ProductList;
     //private List<Order> OrderList;
     
