@@ -43,4 +43,8 @@ public class Order {
     @JoinColumn(name = "profesional_id", referencedColumnName = "id")
     private Professional professional;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
+    private Client client;
+
 }
