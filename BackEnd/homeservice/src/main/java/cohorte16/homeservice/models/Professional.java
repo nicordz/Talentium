@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="Profesionales")
 @Getter
@@ -56,8 +58,9 @@ public class Professional {
     @JoinColumn(name = "profesional_usuario_id", referencedColumnName = "id")
     private User userApp;
 
-    //private List<Product> ProductList;
-    //private List<Order> OrderList;
+    @OneToMany
+    @JoinColumn(name = "profesional_orden_id", referencedColumnName = "id")
+    private List<Order> orderList;
     
 
 

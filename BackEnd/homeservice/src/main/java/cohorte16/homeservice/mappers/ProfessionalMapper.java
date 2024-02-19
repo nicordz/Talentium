@@ -17,7 +17,8 @@ public class ProfessionalMapper {
                 professional.getUrlImage(),
                 professional.getCbu(),
                 professional.getUserApp(),
-                professional.getDirection()
+                professional.getDirection(),
+                professional.getOrderList()
         );
     }
 
@@ -33,7 +34,8 @@ public class ProfessionalMapper {
                 professionalDTO.urlImage(),
                 Boolean.TRUE,
                 professionalDTO.direction(),
-                professionalDTO.userApp()
+                professionalDTO.userApp(),
+                professionalDTO.orderList()
         );
     }
 
