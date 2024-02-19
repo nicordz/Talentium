@@ -17,8 +17,8 @@ public class UserSeviceImpl implements UserService {
     private UsuariosRepository usuariosRepository;
 
     @Override
-    public void saveUser(DatosRegistroUsuario datosRegistroUsuario) {
-        usuariosRepository.save(new User(datosRegistroUsuario));
+    public User saveUser(DatosRegistroUsuario datosRegistroUsuario) {
+       return usuariosRepository.save(new User(datosRegistroUsuario));
     }
 
     @Override
