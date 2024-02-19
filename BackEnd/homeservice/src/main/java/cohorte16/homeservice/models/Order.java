@@ -39,7 +39,6 @@ public class Order {
     @Enumerated(value = EnumType.STRING)
     private Orderstatus orderstatus;
 
-
     @ManyToOne
     @JoinColumn(name = "profesional_id", referencedColumnName = "id")
     private Professional professional;
