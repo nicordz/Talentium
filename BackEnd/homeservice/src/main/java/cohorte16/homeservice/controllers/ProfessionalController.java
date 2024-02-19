@@ -1,5 +1,6 @@
 package cohorte16.homeservice.controllers;
 
+import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.services.impl.ProfessionalServiceImpl;
 import jakarta.validation.Valid;
@@ -32,17 +33,17 @@ public class ProfessionalController {
         }
     }
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> save(@Valid @RequestBody Professional professional){
+    public ResponseEntity<?> save(@Valid @RequestBody ProfessionalDTO professionalDTO){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.save(professional));
+            return ResponseEntity.status(HttpStatus.OK).body(professionalService.save(professionalDTO));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
     }
     @PutMapping(value = "/{id}", consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody Professional professional){
+    public ResponseEntity<?> update(@Valid @PathVariable Long id, @RequestBody ProfessionalDTO professionalDTO){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(professionalService.update(id,professional));
+            return ResponseEntity.status(HttpStatus.OK).body(professionalService.update(id,professionalDTO));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
