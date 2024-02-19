@@ -1,75 +1,83 @@
 package cohorte16.homeservice.services.impl;
 
+import cohorte16.homeservice.dtos.ClientDTO;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
+import cohorte16.homeservice.mappers.ClientMapper;
+import cohorte16.homeservice.mappers.ProfessionalMapper;
 import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.repositories.ClientRepository;
+import cohorte16.homeservice.repositories.ProfessionalRepository;
 import cohorte16.homeservice.services.ClientService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService {
 
-    @Autowired
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
+    private final ClientMapper clientMapper;
 
+    public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper){
+        this.clientRepository = clientRepository;
+        this.clientMapper = clientMapper;
+    }
 
     @Override
-    @Transactional
-    public Client save(Client client) throws Exception {
+    public ClientDTO save(ClientDTO clientDTO) throws Exception {
         try {
-            return clientRepository.save(client);
+            Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
+            Client clientSaved = clientRepository.save(clientEntity);
+            return clientMapper.clientToClientDTO(clientSaved);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
-    public Client findById(Long id) throws Exception {
+    public ClientDTO findById(Long id) throws Exception {
         try {
             Optional<Client> clientOptional = clientRepository.findById(id);
             if (clientOptional.isEmpty()) {
                 throw new EntityNotFoundException("Client not found");
             }
-            return clientOptional.get();
+            Client client = clientOptional.get();
+            return clientMapper.clientToClientDTO(client);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
-    public List<Client> findAll() throws Exception {
+    public List<ClientDTO> findAll() throws Exception {
         try {
-            return clientRepository.findAll();
+            List<Client> clientList = clientRepository.findAll();
+            return clientList.stream().map(clientMapper::clientToClientDTO).toList();
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
-    public Client update(Long id, Client client) throws Exception {
+    public ClientDTO update(Long id, ClientDTO clientDTO) throws Exception {
         try {
             Optional<Client> clientOptional = clientRepository.findById(id);
             if(clientOptional.isEmpty()){
                 throw new EntityNotSavedException("Client not found");
             }
-            Client clientUpdated = getClient(client, clientOptional);
-            return clientRepository.save(clientUpdated);
+            Client clientEntity = clientMapper.clientDTOToClient(clientDTO);
+            Client clientUpdate = getClient(clientEntity,clientOptional);
+            return clientMapper.clientToClientDTO(clientUpdate);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    @Transactional
     public boolean delete(Long id) throws Exception {
         try {
             if(clientRepository.existsById(id)){
