@@ -39,16 +39,18 @@ public class Client {
     private Integer classification;
 
     @Column(name = "activo")
-    private Boolean active = Boolean.TRUE;
+    private Boolean active = Boolean.FALSE;
 
-/*
-    @Column(name = "cliente_usuario_id")
-    private Usuarios userId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_usuario_id")
+    private User user;
 
-    @Column(name = "cliente_direccion_id")
-    private Direcciones directionId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_direccion_id")
+    private Direction direction;
 
     //ACA LA CLASE DE LAFK
+/*
     @Column(name = "cliente_orden_id")
     private Ordenes orderId;
 

@@ -5,6 +5,7 @@ import cohorte16.homeservice.models.Direction;
 import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.models.Professional;
 import cohorte16.homeservice.models.User;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
