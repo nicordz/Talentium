@@ -16,6 +16,7 @@ public class ClientMapper {
                 client.getClassification(),
                 client.getUser(),
                 client.getDirection()
+                //client.getOrder()
         );
     }
 
@@ -30,6 +31,7 @@ public class ClientMapper {
                 Boolean.TRUE,
                 clientDTO.user(),
                 clientDTO.direction()
+                //clientDTO.order()
         );
     }
 }
