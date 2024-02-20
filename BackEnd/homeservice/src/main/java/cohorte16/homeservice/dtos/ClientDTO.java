@@ -1,6 +1,7 @@
 package cohorte16.homeservice.dtos;
 
 import cohorte16.homeservice.models.Direction;
+import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.models.User;
 
 public record ClientDTO(
@@ -11,6 +12,7 @@ public record ClientDTO(
         Integer classification,
         User user,
         Direction direction
+        //Order order
 ) {
 
 }
