@@ -6,13 +6,14 @@ export interface UserProps {
     speciality?: Specialities;
 }
 
-export interface RegisterFormProps {
+export interface RegistrationFormProps {
     name: string;
     surname: string;
     mail: string;
     password: string;
+    avatar?: string | null;
     speciality?: Specialities;
-    userType: UserType;
+    userType?: UserType;
 }
 
 export interface UserTypeSelectorProps {
@@ -20,14 +21,14 @@ export interface UserTypeSelectorProps {
 }
 
 export enum UserType {
-    Customer = 'Cliente',
-    Professional = 'Profesional',
+    Customer = "Cliente",
+    Professional = "Profesional",
 }
 
 type Specialities = [
-    'Abogado',
-    'Plomero',
-    'Ingeniero',
-    'Jardinero',
-    'Electricista'
+    "Abogado",
+    "Plomero",
+    "Ingeniero",
+    "Jardinero",
+    "Electricista"
 ];

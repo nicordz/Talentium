@@ -1,15 +1,10 @@
-//import React, { useState } from "react";
-import Footer from "./screens/Footer";
-import { AppRouter } from "./routers/AppRouter";
+import { AppRouter } from "./routers/AppRouter";import Footer from "./screens/Footer";
 import Header from "./screens/Header";
 
 const App: React.FC = () => {
   return (
     <>
       <AppRouter />
-
-
-
       <div>
         <Footer />
       </div>
