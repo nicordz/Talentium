@@ -4,6 +4,7 @@ import cohorte16.homeservice.dtos.LoginDTO;
 import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.repositories.UserRepository;
+import cohorte16.homeservice.security.EncryptData;
 import cohorte16.homeservice.services.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,12 @@ public class UserSeviceImpl implements UserService {
 
     @Override
     public User saveUser(RegistroUsuarioDTO registroUsuarioDTO) {
-       return userRepository.save(new User(registroUsuarioDTO));
+       return userRepository.save(  new User(null,registroUsuarioDTO.email(),EncryptData.encryptPassword(registroUsuarioDTO.contrasenia() ),registroUsuarioDTO.avatar()));
     }
 
     @Override
     public User validateLogin(LoginDTO datosLogin) {
-        return userRepository.findByEmailAndContrasenia(datosLogin.email(), datosLogin.contrasenia() );
+        return userRepository.findByEmailAndContrasenia(datosLogin.email(), EncryptData.encryptPassword(datosLogin.contrasenia())  );
 
     }
     }
