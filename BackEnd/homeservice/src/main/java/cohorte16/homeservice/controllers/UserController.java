@@ -51,7 +51,7 @@ public class UserController {
         User userCreated;
         HttpHeaders jwtToken = new HttpHeaders();
         LocalDate hora = LocalDate.now();
-        jwtToken.set("Authorization", "Bearer " + hora + " jwttoken");
+        jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
 
         try {
             userCreated = userSeviceImpl.validateLogin(datosLogin);
