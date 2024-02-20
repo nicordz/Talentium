@@ -4,15 +4,12 @@ import { AppRouter } from "./routers/AppRouter";
 import Header from "./screens/Header";
 
 const App: React.FC = () => {
-  
   return (
     <>
       <AppRouter />
 
-      <div>
-        <Header />
-      </div>
-      
+
+
       <div>
         <Footer />
       </div>
