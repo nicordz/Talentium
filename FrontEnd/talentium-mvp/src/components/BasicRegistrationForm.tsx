@@ -123,6 +123,8 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
                     aria-invalid={errors.mail ? "true" : "false"}
                     placeholder='ejemplo@mail.com'
                     className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
+                    type='email'
+                    id='email-input'
                 />
             </label>
 
@@ -155,6 +157,7 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
                     placeholder='Ingrese su contraseña'
                     className='text-base w-full rounded-sm outline-none px-2 py-1 mt-1 bg-white/80 font-normal'
                     type='password'
+                    id='password-input'
                 />
             </label>
 
