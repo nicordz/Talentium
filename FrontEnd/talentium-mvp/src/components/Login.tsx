@@ -45,6 +45,7 @@ const Login: React.FC = () => {
             value={loginForm.email}
             onChange={handleInputChange}
             className="w-30 rounded-md m-1 px-2 shadow-inner shadow-slate-900"
+            required
           />
           <input
             type="password"
@@ -54,6 +55,7 @@ const Login: React.FC = () => {
             value={loginForm.password}
             onChange={handleInputChange}
             className="w-30 rounded-md m-1 px-2 shadow-inner shadow-slate-900"
+            required
           />
           <button
             type="submit"

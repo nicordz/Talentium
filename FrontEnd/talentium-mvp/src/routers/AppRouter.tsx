@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Login from "../components/Login";
-import Navbar from "../screens/Navbar";
+import Header from "../screens/Header";
 import BasicRegistrationForm from "../components/BasicRegistrationForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,7 @@ export const AppRouter: React.FC = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Navbar />} />
+                <Route path='/' element={<Header />} />
                 <Route path='/Login' element={<Login />} />
                 <Route
                     path='/Register'
