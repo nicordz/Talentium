@@ -49,10 +49,14 @@ public class Client {
     @JoinColumn(name = "cliente_direccion_id")
     private Direction direction;
 
+    /*@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_orden_id",referencedColumnName = "id")
+    private Order order;*/
+
     //ACA LA CLASE DE LAFK
 /*
     @Column(name = "cliente_orden_id")
-    private Ordenes orderId;
+    private Ordenes order;
 
     @Column(name = "compra_id")
     private Compras purchaseId;

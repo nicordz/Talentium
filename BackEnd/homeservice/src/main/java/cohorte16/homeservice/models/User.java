@@ -1,10 +1,8 @@
 package cohorte16.homeservice.models;
 
+import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Table(name = "usuarios")
 @Entity
@@ -25,9 +23,9 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
-    public User(DatosRegistroUsuario datosRegistroUsuario) {
-        this.email = datosRegistroUsuario.email();
-        this.contrasenia = datosRegistroUsuario.contrasenia();
-        this.avatar = datosRegistroUsuario.avatar();
+    public User(RegistroUsuarioDTO registroUsuarioDTO) {
+        this.email = registroUsuarioDTO.email();
+        this.contrasenia = registroUsuarioDTO.contrasenia();
+        this.avatar = registroUsuarioDTO.avatar();
     }
 }
