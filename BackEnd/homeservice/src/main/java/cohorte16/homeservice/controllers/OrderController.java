@@ -1,5 +1,7 @@
 package cohorte16.homeservice.controllers;
 
+import cohorte16.homeservice.dtos.OrderDTO;
+import cohorte16.homeservice.dtos.ProfessionalDTO;
 import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.services.impl.OrderServiceImpl;
 import jakarta.validation.Valid;
@@ -29,10 +31,9 @@ public class OrderController {
 
 
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public ResponseEntity<?> createOrder( @RequestParam String description) {
+    public ResponseEntity<?> createOrder( @RequestBody OrderDTO orderDTO) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(orderService.CreatedOrder(description));
-
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.CreatedOrder(orderDTO));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }
@@ -48,7 +49,7 @@ public class OrderController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity deleteOrder(@PathVariable Long id){
+    public ResponseEntity<?> deleteOrder(@PathVariable Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(orderService.deleteOrder(id));
         }catch (Exception e){
