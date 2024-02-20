@@ -61,11 +61,5 @@ public class Professional {
     @OneToMany
     @JoinColumn(name = "profesional_orden_id", referencedColumnName = "id")
     private List<Order> orderList;
-    
-
-
-
-
-
 
 }
