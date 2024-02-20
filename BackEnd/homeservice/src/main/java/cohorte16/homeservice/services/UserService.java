@@ -1,12 +1,12 @@
 package cohorte16.homeservice.services;
 
-import cohorte16.homeservice.models.DatosLigin;
-import cohorte16.homeservice.models.DatosRegistroUsuario;
+import cohorte16.homeservice.dtos.LoginDTO;
+import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import cohorte16.homeservice.models.User;
 
 public interface UserService {
 
-    public User saveUser(DatosRegistroUsuario datosRegistroUsuario);
+    public User saveUser(RegistroUsuarioDTO registroUsuarioDTO);
 
-    public String validateLogin(DatosLigin datosLogin);
+    public User validateLogin(LoginDTO datosLogin);
 }
