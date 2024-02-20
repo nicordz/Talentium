@@ -1,17 +1,22 @@
 package cohorte16.homeservice.controllers;
 
-import cohorte16.homeservice.models.DatosLigin;
-import cohorte16.homeservice.models.DatosRegistroUsuario;
+import cohorte16.homeservice.dtos.LoginDTO;
+import cohorte16.homeservice.dtos.RegistroUsuarioDTO;
 import cohorte16.homeservice.models.User;
 import cohorte16.homeservice.services.impl.UserSeviceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatterBuilder;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -21,11 +26,11 @@ public class UserController {
     private UserSeviceImpl userSeviceImpl;
 
     @PostMapping
-    public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario){
+    public ResponseEntity<?> RegistrarUsuario(@RequestBody @Valid RegistroUsuarioDTO registroUsuarioDTO){
 
         User userCreated;
         try {
-          userCreated =  userSeviceImpl.saveUser(datosRegistroUsuario);
+          userCreated =  userSeviceImpl.saveUser(registroUsuarioDTO);
 
         }catch (Exception ex){
 
@@ -33,7 +38,7 @@ public class UserController {
         }
 
         //devulve por convencion la url con los datos del usuario crado
-        return ResponseEntity.created(URI.create("/usuarios/"+new DatosRegistroUsuario(userCreated).id())).body(DatosRegistroUsuario.builder()
+        return ResponseEntity.created(URI.create("/usuarios/"+new RegistroUsuarioDTO(userCreated).id())).body(RegistroUsuarioDTO.builder()
                 .avatar(userCreated
                         .getAvatar())
                 .email(userCreated.getEmail())
@@ -42,12 +47,22 @@ public class UserController {
 
 
     @PostMapping( value = "/login")
-    public ResponseEntity <String>login(@RequestBody @Valid DatosLigin datosLogin) {
+    public ResponseEntity<?> login(@RequestBody @Valid LoginDTO datosLogin) {;
+        User userCreated;
+        HttpHeaders jwtToken = new HttpHeaders();
+        LocalDate hora = LocalDate.now();
+        jwtToken.set("Authorization", "Bearer " + hora + " git jwttoken");
+
         try {
-            userSeviceImpl.validateLogin(datosLogin);
+            userCreated = userSeviceImpl.validateLogin(datosLogin);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body("Inicio de secion correcto");
+        return ResponseEntity.created(URI.create("/usuarios/login/"+new RegistroUsuarioDTO(userCreated).id())).headers(jwtToken)
+                .body(RegistroUsuarioDTO.builder()
+                .avatar(userCreated
+                        .getAvatar())
+                .email(userCreated.getEmail())
+                .id(userCreated.getId()).build());
     }
 }
