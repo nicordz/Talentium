@@ -34,7 +34,7 @@ const Login: React.FC = () => {
       >
         <label className="flex flex-col items-center justify-center m-3 p-4">
           <div className="bg-royal-blue-900 w-16 h-16 rounded-full mb-2 flex items-center justify-center">
-            <img src="/Avatar.png" alt="" />
+            <img src="/NoAvatar.png" alt="" />
           </div>
 
           <input
