@@ -24,6 +24,15 @@ export const AppRouter: React.FC = () => {
           }
         />
         <Route path="/*" element={<PageNotFound />} />
+        <Route path="/acerca-de" element={<h1>ACA VA INFO DE ACERCA DE</h1>} />
+        <Route
+          path="/preguntas-frecuentes"
+          element={<h1>ACA VAN LAS PREGUNTAS FRECUENTES</h1>}
+        />
+        <Route
+          path="/terminos-y-condiciones"
+          element={<h1>ACA VAN LOS TERMINOS Y CONDICIONES</h1>}
+        />
       </Routes>
     </BrowserRouter>
   );
