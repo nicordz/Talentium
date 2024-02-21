@@ -14,7 +14,7 @@ const TuComponenteReact = () => {
               <p className="text-start font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque eveniet porro nisi ex maiores enim voluptatum fuga voluptates saepe illum necessitatibus aliquid.</p>
             </div>
             <div className="p-5">
-              <h3 className="text-3xl mb-4 font-semibold">03 <br /> Registro</h3>
+              <h3 className="text-3xl mb-4 font-semibold">03 <br /> Contacta</h3>
               <p className="text-start font-medium">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque eveniet porro nisi ex maiores enim voluptatum fuga voluptates saepe illum necessitatibus aliquid.</p>
             </div>
           </div>
