@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { IoCloseOutline } from "react-icons/io5";
 import { RegistrationFormProps } from "../interfaces/RegisterFormTypes";
 import { toast } from "react-toastify";
@@ -13,7 +12,7 @@ const MAX_FILE_SIZE_BYTES = 102400; // 100KB
 const RegisterForm: React.FC<RegistrationFormProps> = () => {
     const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
     const [showCloseIcon, setShowCloseIcon] = useState(false);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -25,19 +24,21 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
 
     const onSubmit: SubmitHandler<RegistrationFormProps> = async (data) => {
         try {
-          console.log(data);
+            console.log(data);
 
-          // localstorage y el navigate no van acá, debería ir luego del await createUser(data). Lo coloqué simplemente para probar que redirija bien al dashboard ya que falta la conexion a DB para hacer el POST-
-          localStorage.setItem('mail', JSON.stringify(data.mail));
-          navigate('/');
-          ///////////////////////////////////////
-          const userCreated = await createUser(data);
+            // localstorage y el navigate no van acá, debería ir luego del await createUser(data). Lo coloqué simplemente para probar que redirija bien al dashboard ya que falta la conexion a DB para hacer el POST-
+            localStorage.setItem("mail", JSON.stringify(data.mail));
+            navigate("/");
+            ///////////////////////////////////////
+            const userCreated = await createUser(data);
 
-          if (userCreated) {
-            toast.success('Te has registrado exitosamente!');
-          } else {
-            toast.error('Hubo un error con el registro, vuelve a intentarlo');
-          }
+            if (userCreated) {
+                toast.success("Te has registrado exitosamente!");
+            } else {
+                toast.error(
+                    "Hubo un error con el registro, vuelve a intentarlo"
+                );
+            }
         } catch (error) {
             console.error("Error during form submission:", error);
             toast.error("Ha ocurrido un error inesperado");
@@ -97,11 +98,11 @@ const RegisterForm: React.FC<RegistrationFormProps> = () => {
                     src={avatarPreview ? avatarPreview : NoAvatar}
                     alt='Avatar Preview'
                     style={{
-                        maxWidth: "100px",
-                        maxHeight: "100px",
+                        width: "100px",
+                        height: "100px",
                         cursor: "pointer",
                     }}
-                    className='rounded-full'
+                    className='rounded-full object-fill'
                 />
                 {showCloseIcon && avatarPreview && (
                     <IoCloseOutline
