@@ -1,9 +1,10 @@
-
-
+import OrderCard from "../components/OrderCard";
 const DashboardCliente = () => {
-  return (
-    <div>DASHBOARD DEL CLIENTE</div>
-  )
-}
+    return (
+        <div className='flex justify-center'>
+            <OrderCard />
+        </div>
+    );
+};
 
-export default DashboardCliente
+export default DashboardCliente;

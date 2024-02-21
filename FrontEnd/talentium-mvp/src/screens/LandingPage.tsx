@@ -3,6 +3,7 @@ import DashboardCliente from './DashboardCliente';
 import Footer from './Footer';
 import Header from './Header';
 import Hero from './Hero';
+import Article from '../components/Article';
 
 const LandingPage = () => {
   const [email, setEmail] = useState('');
@@ -15,15 +16,14 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className=" bg-gradient-to-b from-royal-blue-500  to-white
+    flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
         {!email ? (
-          <section className="bg-royal-blue-500 text-white body-font flex-grow">
+          <section className=" body-font flex-grow">
             <Hero />
-            <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-              <p> Acá va la info del usuario NO LOGUEADO</p>
-            </div>
+            <Article/>
           </section>
         ) : (
           <>
@@ -31,6 +31,7 @@ const LandingPage = () => {
           </>
         )}
       </main>
+      
       <Footer />
     </div>
   );
