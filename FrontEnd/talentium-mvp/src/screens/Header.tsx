@@ -1,7 +1,16 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Header: React.FC = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    auth.logout();
+    navigate("/");
+  }
+
   return (
     <header className="bg-royal-blue-500 text-white body-font flex flex-row items-center justify-between">
       <div className="pl-5 pt-2">
@@ -28,7 +37,15 @@ const Header: React.FC = () => {
       </div>
 
       <div className="pr-3">
-        <NavLink
+        {auth.user ? (
+          <>
+            <span className="py-1 px-3">{auth.user.name}</span>
+            <img src={auth.user.photoUrl} alt="Perfil" className="w-10 h-10 rounded-full" />
+            <button type="button" onClick={handleLogout}>Cerrar sesion</button>
+          </>
+        ) : (
+          <>
+            <NavLink
           to="/Login"
           className="py-1 px-3 focus:outline-none hover:bg-gradient-to-t from-royal-blue-800 rounded-md"
         >
@@ -40,6 +57,8 @@ const Header: React.FC = () => {
         >
           Registrate
         </NavLink>
+          </>
+        )}
       </div>
     </header>
   );

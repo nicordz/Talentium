@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../interfaces/LoginForm";
+import { useAuth } from "../context/AuthContext";
 
 const Login: React.FC = () => {
+  const auth = useAuth();
+
   const navigate = useNavigate();
+
   const [loginForm, setLoginForm] = useState<LoginForm>({
+    name: "",
     email: "",
+    photoUrl: "",
     password: "",
   });
+
   const [error, setError] = useState<string>("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,12 +23,12 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    auth.login({ photoUrl: loginForm.photoUrl, name: loginForm.name, email: loginForm.email });
 
     if (!loginForm.email || !loginForm.password) {
       setError("Todos los campos son obligatorios");
       return;
     }
-      localStorage.setItem('mail', JSON.stringify(loginForm.email));
     console.log("formulario enviado", loginForm);
     navigate("/");
   };
@@ -35,7 +42,7 @@ const Login: React.FC = () => {
       >
         <label className="flex flex-col items-center justify-center m-3 p-4">
           <div className="bg-royal-blue-900 w-16 h-16 rounded-full mb-2 flex items-center justify-center">
-            <img src="/NoAvatar.png" alt="" />
+            <img src="/NoAvatar.png" alt="" className="w-14 h-14 rounded-full" />
           </div>
 
           <input
