@@ -58,8 +58,7 @@ public class Professional {
     @JoinColumn(name = "profesional_usuario_id", referencedColumnName = "id")
     private User userApp;
 
-    @OneToMany
-    @JoinColumn(name = "profesional_orden_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "professional", cascade = CascadeType.ALL)
     private List<Order> orderList;
 
 }
