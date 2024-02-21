@@ -37,7 +37,6 @@ public class Order {
 
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
-    @NotNull
     private Date date =  new Date();
 
     @Column(name = "ESTADO")

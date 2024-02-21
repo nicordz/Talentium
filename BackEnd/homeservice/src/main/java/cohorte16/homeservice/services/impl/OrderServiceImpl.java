@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,8 @@ public class OrderServiceImpl implements OrderService {
             Order  odenDb = Order.builder()
                     .description(order.description())
                     .client(Client.builder().id(order.cliente_id()).build()  )
+                    .date( new Date())
+                    .orderstatus(Orderstatus.valueOf("Inicial"))
                     .build();
 
             return orderRepository.save(odenDb);
