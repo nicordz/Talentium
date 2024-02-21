@@ -11,13 +11,13 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
-@Table(name = "ordenes")
+
+@Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Entity
+@Table(name = "ordenes")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,10 @@ public class Order {
     @NotBlank
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "profesional_id", referencedColumnName = "id")
+    private Professional professional;
+
     @Column(name = "precio")
     @DecimalMin(value = "0.01")
     private BigDecimal price;
@@ -34,22 +38,20 @@ public class Order {
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     @NotNull
-    private Date date;
+    private Date date =  new Date();
 
     @Column(name = "ESTADO")
     @Enumerated(value = EnumType.STRING)
     private Orderstatus orderstatus;
 
-    @ManyToOne
-    @JoinColumn(name = "profesional_id", referencedColumnName = "id")
-    private Professional professional;
+
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Client client;
 
     public Order(OrderDTO orderDTO){
-        this.id = orderDTO.id();
-        this.description = orderDTO.orders();
+        this.client.setId(orderDTO.cliente_id());
+        this.description = orderDTO.description();
     }
 }

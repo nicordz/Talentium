@@ -8,30 +8,21 @@ import org.springframework.stereotype.Service;
 public class ClientMapper {
 
     public ClientDTO clientToClientDTO(Client client) {
-        return new ClientDTO(
-                client.getName(),
-                client.getLastname(),
-                client.getDni(),
-                client.getUrlImage(),
-                client.getClassification(),
-                client.getUser(),
-                client.getDirection()
-                //client.getOrder()
-        );
+        return new ClientDTO(client);
     }
 
     public Client clientDTOToClient(ClientDTO clientDTO){
-        return new Client(
-                null,
+        return  new Client(clientDTO);
+
+            /*    null,
                 clientDTO.name(),
                 clientDTO.lastname(),
                 clientDTO.dni(),
                 clientDTO.urlImage(),
                 clientDTO.classification(),
-                Boolean.TRUE,
                 clientDTO.user(),
-                clientDTO.direction()
-                //clientDTO.order()
-        );
+                clientDTO.direction(),
+                clientDTO.order()*/
+
     }
 }

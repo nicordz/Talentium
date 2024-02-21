@@ -33,7 +33,7 @@ public class OrderController {
     @PostMapping(consumes = "application/json",produces = "application/json")
     public ResponseEntity<?> createOrder( @RequestBody OrderDTO orderDTO) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(orderService.CreatedOrder(orderDTO));
+            return ResponseEntity.status(HttpStatus.CREATED).body(orderService.CreatedOrder(orderDTO));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error! Something went wrong");
         }

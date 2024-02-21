@@ -1,6 +1,7 @@
 package cohorte16.homeservice.models;
 
 
+import cohorte16.homeservice.dtos.ClientDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,13 +35,6 @@ public class Client {
     @Column(name = "imagen")
     private String urlImage;
 
-    @Column(name = "clasificacion")
-    @NotNull
-    private Integer classification;
-
-    @Column(name = "activo")
-    private Boolean active = Boolean.FALSE;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_usuario_id")
     private User user;
@@ -49,17 +43,27 @@ public class Client {
     @JoinColumn(name = "cliente_direccion_id")
     private Direction direction;
 
-    /*@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_orden_id",referencedColumnName = "id")
-    private Order order;*/
+    @Column(name = "clasificacion")
+    private Integer classification;
 
-    //ACA LA CLASE DE LAFK
+
 /*
-    @Column(name = "cliente_orden_id")
-    private Ordenes order;
-
     @Column(name = "compra_id")
-    private Compras purchaseId;
-*/
+    private Compras purchaseId;*/
 
+    @Column(name = "activo")
+    private Boolean active;
+
+
+    public Client(ClientDTO clientDTO) {
+
+        this.name = clientDTO.name();
+        this.lastname = clientDTO.lastname();
+        this.dni = clientDTO.dni();
+        this.urlImage = clientDTO.urlImage();
+        this.user = clientDTO.user();
+        this.direction = clientDTO.direction();
+        this.classification = clientDTO.classification();
+
+    }
 }

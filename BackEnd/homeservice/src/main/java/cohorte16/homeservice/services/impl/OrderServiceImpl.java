@@ -3,6 +3,7 @@ package cohorte16.homeservice.services.impl;
 import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.enums.Orderstatus;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
+import cohorte16.homeservice.models.Client;
 import cohorte16.homeservice.models.Order;
 import cohorte16.homeservice.repositories.OrderRepository;
 import cohorte16.homeservice.services.OrderService;
@@ -36,7 +37,13 @@ public class OrderServiceImpl implements OrderService {
         // var ordenes = orderRepository.getReferenceById(order.id());
          //ordenes.setDescription(order.orders());
            // return orderRepository.save(ordenes);
-            return new Order(order);
+         //   return orderRepository.save(new Order(order));
+            Order  odenDb = Order.builder()
+                    .description(order.description())
+                    .client(Client.builder().id(order.cliente_id()).build()  )
+                    .build();
+
+            return orderRepository.save(odenDb);
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
