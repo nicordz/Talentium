@@ -1,5 +1,6 @@
 package cohorte16.homeservice.models;
 
+import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.enums.Orderstatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
@@ -47,4 +48,8 @@ public class Order {
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Client client;
 
+    public Order(OrderDTO orderDTO){
+        this.id = orderDTO.id();
+        this.description = orderDTO.orders();
+    }
 }
