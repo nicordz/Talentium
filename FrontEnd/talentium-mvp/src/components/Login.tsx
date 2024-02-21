@@ -21,8 +21,9 @@ const Login: React.FC = () => {
       setError("Todos los campos son obligatorios");
       return;
     }
+      localStorage.setItem('mail', JSON.stringify(loginForm.email));
     console.log("formulario enviado", loginForm);
-    navigate("/home");
+    navigate("/");
   };
 
   return (

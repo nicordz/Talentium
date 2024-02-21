@@ -1,18 +1,14 @@
-import { AppRouter } from "./routers/AppRouter";import Footer from "./screens/Footer";
-import Hero from "./screens/Hero";
+import { Suspense } from "react";
+import { AppRouter } from "./routers/AppRouter";
+import LoadingPage from "./screens/LoadingPage"
+
 
 const App: React.FC = () => {
   return (
     <>
-      <AppRouter />
-
-      <div>
-        <Hero />
-      </div>
-
-      <div>
-        <Footer />
-      </div>
+      <Suspense fallback={<LoadingPage/>}>
+ <AppRouter />
+      </Suspense>
     </>
   );
 };
