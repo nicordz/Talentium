@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-royal-blue-500 text-white body-font flex flex-row items-center justify-between">
+    <header className=" body-font flex flex-row items-center justify-between">
       <div className="pl-5 pt-2">
         <Link to="/">
           <img src="/Logo2.png" alt="" className="w-36 h-auto" />
