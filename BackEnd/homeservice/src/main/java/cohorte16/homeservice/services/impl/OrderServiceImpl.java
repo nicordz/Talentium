@@ -1,5 +1,6 @@
 package cohorte16.homeservice.services.impl;
 
+import cohorte16.homeservice.dtos.OrderDTO;
 import cohorte16.homeservice.enums.Orderstatus;
 import cohorte16.homeservice.exceptions.EntityNotSavedException;
 import cohorte16.homeservice.models.Order;
@@ -18,8 +19,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     public OrderRepository orderRepository;
-    @Override
 
+    @Override
     public List<Order> getAllInitialOrders() throws Exception {
         try{
             return orderRepository.findByOrderstatus(Orderstatus.Inicial);
@@ -28,14 +29,14 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+
     @Override
-    public String CreatedOrder(String description) throws Exception {
+    public Order CreatedOrder(OrderDTO order) throws Exception {
         try{
-            Order order = new Order();
-            order.setDescription(description);
-            order.setOrderstatus(Orderstatus.Inicial);
-            Order orderSaved = orderRepository.save(order);
-            return orderSaved.getDescription();
+        // var ordenes = orderRepository.getReferenceById(order.id());
+         //ordenes.setDescription(order.orders());
+           // return orderRepository.save(ordenes);
+            return new Order(order);
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }

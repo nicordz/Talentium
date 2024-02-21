@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -27,9 +28,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
     }
 
     @Override
-    public List<Professional> findAll() throws Exception {
+    public List<ProfessionalDTO> findAll() throws Exception {
        try {
-          return professionalRepository.findAll();
+          List<Professional> professionalList = professionalRepository.findAll();
+           return professionalList.stream().map(professionalMapper::professionalToProfessionalDTO
+           ).collect(Collectors.toList());
        }catch (Exception e){
            throw new Exception(e.getMessage());
        }
